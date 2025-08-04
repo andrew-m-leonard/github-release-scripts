@@ -90,6 +90,8 @@ class UploadAdoptReleaseFiles {
           }
         }
 
+        println("Getting repo ${repoName}")
+
         return github.getRepository(repoName)
     }
 
@@ -104,7 +106,7 @@ class UploadAdoptReleaseFiles {
                         existing.delete()
                     }
 
-            println("Uploading ${file.name}")
+            println("Uploading ${file.name} to release tag ${tag}")
             release.uploadAsset(file, Files.probeContentType(file.toPath()))
         }
     }
